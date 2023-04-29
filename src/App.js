@@ -9,10 +9,12 @@ import Login from "./components/Login";
 import { Toaster } from "react-hot-toast";
 import PrivateComponent from "./components/PrivateComponent";
 
-
 // website domain
 // export const server = "http://localhost:80/api/v1";
 export const server = "https://todoapp-n3sb.onrender.com/api/v1";
+
+// site live at
+// https://react-todoapp.onrender.com/login
 
 // toastify
 
@@ -30,7 +32,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/*" element={<h1>page not found</h1>} />
       </Routes>
-      <Toaster />
+      <Toaster position="top-center" reverseOrder={true} />
     </BrowserRouter>
   );
 };

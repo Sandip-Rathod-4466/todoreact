@@ -32,11 +32,8 @@ const Login = () => {
       return toast.error("can not add empty fields");
     }
 
-    try {
-     
-
-      const data = await sendData();
-
+    const successHandler = (data) => {
+      
       // set user in localstorage
       const user = JSON.stringify(data.user);
       if (user) {
@@ -44,16 +41,9 @@ const Login = () => {
       }
 
       const { success, message } = data;
-
       if (!success) {
-        return toast.error(message);
+        return (message) ;
       }
-
-    await  toast.promise(sendData(), {
-        loading: "verifying...",
-        success: <b>{message}</b>,
-        error: <b>user not registerd!</b>,
-      });
 
 
       setValues({
@@ -62,6 +52,27 @@ const Login = () => {
       });
 
       navigate("/");
+
+      return message
+    };
+
+    try {
+      // for button
+      const text = document.getElementById("btn-txt");
+      text.innerHTML = `<span >verifying</span> `
+      text.setAttribute("disabled","")
+
+    const data =  await toast.promise(sendData(), {
+        loading: "verifying...",
+        success: successHandler,
+        error: <b>internal server error!</b>,
+      });
+
+      if (!(data.success)) {
+        text.innerHTML = `<span >Login</span> `
+        text.removeAttribute("disabled","");
+      }
+
     } catch (error) {
       toast.error(`internal server error`);
     }
@@ -86,8 +97,8 @@ const Login = () => {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-6">
-            <form className="taskForm">
-            <h2>Login</h2>
+            <form className="taskForm"  onSubmit={handlesend}>
+              <h2>Login</h2>
               <input
                 type="text"
                 id="name"
@@ -108,8 +119,8 @@ const Login = () => {
                 onChange={handlevalue}
               />
 
-              <button onClick={handlesend} className="mainbtn">
-                <span>login</span>
+              <button className="mainbtn" id="btn-txt" >
+                <span >login</span>
               </button>
             </form>
           </div>

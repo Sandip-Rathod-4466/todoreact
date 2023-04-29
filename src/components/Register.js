@@ -26,27 +26,19 @@ const Register = () => {
 
   const handlesend = async (e) => {
     e.preventDefault();
+
+    // chech any empty field from user
     if (!(value.username && value.email && value.password)) {
       return toast.error("can not add empty fields");
     }
 
-    try {
-
-      const data = await newUser();
-
-      //  send user data to the server
-
+    // handling promise from api
+    const successHandle = (data) => {
       const { message, success } = data;
-
       if (!success) {
-        return toast.error(message);
+        navigate("/login");
+        return message;
       }
-
-      await toast.promise(newUser(), {
-        loading: "Saving...",
-        success: <b>{message}</b>,
-        error: <b>Could not save.</b>,
-      });
 
       setValues({
         username: "",
@@ -54,7 +46,28 @@ const Register = () => {
         password: "",
       });
 
-      return navigate("/login");
+      navigate("/login");
+
+      return message;
+    };
+
+    try {
+      // for button
+      const text = document.getElementById("btn-txt2");
+      text.innerHTML = `<span >verifying</span> `
+      text.setAttribute("disabled","")
+
+     const data =  await toast.promise(newUser(), {
+        loading: "Saving...",
+        success: successHandle,
+        error: <b>Could not save.</b>,
+      });
+
+      if (!(data.success)) {
+        text.innerHTML = `<span >Register</span> `
+        text.removeAttribute("disabled","");
+      }
+
     } catch (error) {
       return toast.error(error.message);
     }
@@ -108,7 +121,7 @@ const Register = () => {
                 onChange={handlevalue}
               />
 
-              <button className="mainbtn">
+              <button className="mainbtn" id="btn-txt2">
                 <span>Register</span>
               </button>
             </form>
