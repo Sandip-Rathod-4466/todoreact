@@ -1,0 +1,25 @@
+.navbar {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: white !important;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  z-index: 1;  
+}
+
+.navbar li a,
+.navbar .navbar-brand {
+  color: black;
+}
+.navbar li a:hover{
+  color: lightblue;
+}
+
+.navbar .navbar-nav {
+  gap: 15px;
+}
+.navbar-toggler:active{
+  box-shadow: 0;
+  outline: none;
+}

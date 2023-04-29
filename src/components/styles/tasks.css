@@ -1,0 +1,119 @@
+.tasks{
+  max-height: 70vh;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.tasks {
+  border-radius: 10px;
+  margin-top: 10em;
+  padding: 1em;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  
+}
+.task {
+ border-bottom: 1px solid black;
+ margin-bottom: 8px;
+}
+
+.tasks::-webkit-scrollbar{
+  width:0.625rem;
+}
+.tasks::-webkit-scrollbar-track{
+  background:white;
+}
+.tasks::-webkit-scrollbar-thumb{
+  background:black;
+  border-radius: 5px;
+}
+
+
+
+
+
+/* Hide the default checkbox */
+.container1 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .container1 {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 2.3em;
+    width: 2.3em;
+    background-color: #ccc;
+    border-radius: 50%;
+    transition: .4s;
+  }
+  
+  .checkmark:hover {
+    box-shadow: inset 17px 17px 16px #b3b3b3,
+              inset -17px -17px 16px #ffffff;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container1 input:checked ~ .checkmark {
+    box-shadow: none;
+    background-color: limegreen;
+    transform: rotateX(360deg);
+  }
+  
+  .container1 input:checked ~ .checkmark:hover {
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container1 input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container1 .checkmark:after {
+    left: 0.96em;
+    top: 0.7em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid white;
+    border-width: 0 0.15em 0.15em 0;
+    box-shadow: 0.1em 0.1em 0em 0 rgba(0,0,0,0.3);
+    transform: rotate(45deg);
+  }
+  .icon{
+    background-color: yellow;
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  }

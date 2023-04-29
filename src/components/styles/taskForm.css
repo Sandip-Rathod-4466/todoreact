@@ -1,0 +1,102 @@
+
+.taskForm {
+  margin-top: 10em;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+}
+.taskForm textarea {
+  resize: none;
+}
+.taskForm input, .taskForm textarea{
+    color: black;
+    font-size: 19px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    letter-spacing: 1.5px;
+}
+.taskForm input:focus,
+.taskForm textarea:focus{
+   outline: none;
+}
+.taskForm input::placeholder,
+.taskForm textarea::placeholder{
+   color: black;
+}
+
+button.mainbtn {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background: #183153;
+    font-family: "Montserrat", sans-serif;
+    box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border: none;
+   }
+   
+   button.mainbtn:after {
+    content: " ";
+    width: 0%;
+    height: 100%;
+    background: #FFD401;
+    position: absolute;
+    transition: all 0.4s ease-in-out;
+    right: 0;
+   }
+   
+   button.mainbtn:hover::after {
+    right: auto;
+    left: 0;
+    width: 100%;
+   }
+   
+   button.mainbtn span {
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    padding: 18px 25px;
+    color: white;
+    font-size: 1.125em;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    z-index: 20;
+    transition: all 0.3s ease-in-out;
+   }
+   
+   button.mainbtn:hover span {
+    color: #183153;
+    animation: scaleUp 0.3s ease-in-out;
+   }
+   
+   @keyframes scaleUp {
+    0% {
+     transform: scale(1);
+    }
+   
+    50% {
+     transform: scale(0.95);
+    }
+   
+    100% {
+     transform: scale(1);
+    }
+   }
+   
+   .taskForm {
+    color: black;
+   }
